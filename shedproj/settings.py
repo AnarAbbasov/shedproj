@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from os import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,13 +82,14 @@ WSGI_APPLICATION = 'shedproj.wsgi.application'
 #    }
 #}
 #
-
+db_user=environ.get("DB_USER")
+db_pwd=environ.get("DB_PWD")
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
         'NAME': 'shedproj',
-        'USER': 'sa',
-        'PASSWORD': 'anar',
+        'USER': db_user,
+        'PASSWORD': db_pwd ,
         'HOST': '192.168.1.103',
         'PORT': '1433',
         'OPTIONS': {
