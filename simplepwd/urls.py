@@ -3,5 +3,5 @@ from simplepwd import views
 
 
 urlpatterns = [
-    path('',views.index,name='index')
+    path('test/',views.testview,name='test')
 ]
