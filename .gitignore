@@ -1,2 +1,3 @@
 shedproj/db_envs.sh
-shedproj/shedproj/__pycache__
+shedproj/shedproj/__pycache__/
+simplepwd/__pycache__/

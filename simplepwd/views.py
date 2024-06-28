@@ -9,3 +9,6 @@ def index(request):
 
 def testview(request):
     return HttpResponse("test succeshul")
+
+def user_login(request):
+    return render(request,"login.html")
