@@ -4,5 +4,6 @@ app_name = 'simplepwd'
 
 urlpatterns = [
     path('test/',views.testview,name='test'),
-    path('login/',views.user_login,name='user_login')
+    path('login/',views.user_login,name='user_login'),
+    path('resources/',views.Resource_ListView.as_view())
 ]
