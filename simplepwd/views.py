@@ -26,10 +26,11 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                print (str(request.META.get('HTTP_REFERER')).find('='))
+                #check if its redirect 
                 if(str(request.META.get('HTTP_REFERER')).find('=')>0):
                   return HttpResponseRedirect(str(request.META.get('HTTP_REFERER')).split('=')[1])
                 else: 
+                #direct login page call    
                   return HttpResponseRedirect(reverse('index'))
         else:
             print("nologin")
