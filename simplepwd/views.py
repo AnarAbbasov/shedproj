@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.views.generic import TemplateView,ListView,DetailView,CreateView
 from simplepwd import models
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required 
 # Create your views here.
 
 
@@ -24,7 +26,11 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse("index"))
+                print (str(request.META.get('HTTP_REFERER')).find('='))
+                if(str(request.META.get('HTTP_REFERER')).find('=')>0):
+                  return HttpResponseRedirect(str(request.META.get('HTTP_REFERER')).split('=')[1])
+                else: 
+                  return HttpResponseRedirect(reverse('index'))
         else:
             print("nologin")
             return render(request, "nologin.html")
@@ -39,6 +45,10 @@ class Resource_ListView(ListView):
       context_object_name='resource_detail'
       
 class Password_CreateView(CreateView):
+      
       model=models.Passwords
       template_name='create_password.html'
       fields=('password','username','name')
+      @method_decorator(login_required)
+      def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
