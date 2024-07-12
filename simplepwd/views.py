@@ -41,4 +41,4 @@ class Resource_ListView(ListView):
 class Password_CreateView(CreateView):
       model=models.Passwords
       template_name='create_password.html'
-      fields=('password','username','resource')
+      fields=('password','username','name')
