@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
-from django.views.generic import TemplateView,ListView,DetailView
+from django.views.generic import TemplateView,ListView,DetailView,CreateView
 from simplepwd import models
 # Create your views here.
 
@@ -37,3 +37,8 @@ class Resource_ListView(ListView):
       model=models.Resource
       template_name='resource_detail.html'
       context_object_name='resource_detail'
+      
+class Password_CreateView(CreateView):
+      model=models.Passwords
+      template_name='create_password.html'
+      fields=('password','username','resource')
