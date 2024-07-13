@@ -4,16 +4,16 @@
 
 <div class="jumbotron">
 
-<h1>please login</h1>
+<h1>bitte loggen Sie sich ein</h1>
 <form action="{%url 'simplepwd:user_login'%}" method="post">
 
 
     {% csrf_token%}
-    <label for="username">Username</label>
+    <label for="username">Nutzername</label>
     <input type="text" name="username" placeholder="enter username">
-    <label for="password" name="password">password</label>
+    <label for="password" name="password">Passwort</label>
     <input type="password" name="password">
-    <input type="submit" value="Login">
+    <input type="submit" value="Anmeldung">
 </form>
 
 
