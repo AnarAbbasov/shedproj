@@ -7,11 +7,14 @@ from simplepwd import models
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required 
 from .forms import CPasswordForm
+from datetime import date
 # Create your views here.
 
 
 def index(request):
-    return render(request, "index.html")
+    context = {
+        'num_posts': date.today,}
+    return render(request, "index.html",context=context)
 
 
 def testview(request):

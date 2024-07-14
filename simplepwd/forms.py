@@ -7,7 +7,7 @@ class CPasswordForm(forms.ModelForm):
         model = Passwords
         fields = ['password', 'username', 'name']
         widgets = {
-            'password': forms.TextInput(attrs={'class':'form-control'  ,'placeholder':'Password'}),
-            'username': forms.TextInput(attrs={'class': 'form-control','placeholder':'Password'}),
+            'password': forms.TextInput(attrs={'class':'form-control'  ,'placeholder':'Passwort'}),
+            'username': forms.TextInput(attrs={'class': 'form-control','placeholder':'Nutzername'}),
             'name': forms.Select(attrs={'class': 'form-control'}),
         }
