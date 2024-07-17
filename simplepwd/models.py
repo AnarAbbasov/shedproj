@@ -4,7 +4,7 @@ from django.urls import reverse
 # Create your models here.
 
 class Resource(models.Model):
-    name=models.CharField(max_length=256)
+    name=models.CharField(max_length=256,unique=True)
     website=models.CharField(max_length=256)
     notes=models.CharField(max_length=256)
     def __str__(self) :
