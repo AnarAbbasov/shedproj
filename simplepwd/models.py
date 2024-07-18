@@ -9,7 +9,7 @@ class Resource(models.Model):
     notes=models.CharField(max_length=256)
     def __str__(self) :
         return str(self.name)
-    
+    #what to do if succesful insert to db
     def get_absolute_url(self):
         # Assuming you have a view named 'my_model_detail' that displays details of an instance
        # return reverse('my_model_detail', args=[str(self.id)])
