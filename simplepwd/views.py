@@ -48,6 +48,12 @@ class Resource_ListView(ListView):
       model=models.Resource
       template_name='resource_detail.html'
       context_object_name='resource_detail'
+
+
+class Password_ListView(ListView):
+      model=models.Passwords
+      template_name='password_detail.html'
+      context_object_name='password_detail'
       
 class Password_CreateView(CreateView):
       
