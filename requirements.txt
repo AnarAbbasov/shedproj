@@ -1,0 +1,17 @@
+asgiref @ file:///work/perseverance-python-buildout/croot/asgiref_1698866701569/work
+black==24.4.2
+click==8.1.7
+Django @ file:///work/perseverance-python-buildout/croot/django_1698884878321/work
+Faker==25.3.0
+mssql-django==1.5
+mypy-extensions==1.0.0
+packaging==24.1
+pathspec==0.12.1
+platformdirs==4.2.2
+pyodbc==5.1.0
+python-dateutil==2.9.0.post0
+pytz==2024.1
+setuptools==69.5.1
+six==1.16.0
+sqlparse @ file:///work/perseverance-python-buildout/croot/sqlparse_1698874574933/work
+wheel==0.43.0
