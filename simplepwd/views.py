@@ -81,7 +81,7 @@ class Password_SearchView(ListView):
         query = self.request.GET.get('q')
         if query:
            return models.Resource.objects.filter(name__icontains=query)
-        return models.Resource.objects.all()
+        return ""
 
 
 

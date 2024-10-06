@@ -1,21 +1,28 @@
-# Use an official Python runtime as a parent image
-FROM python:3.8
-
-# Set environment variables
-ENV PYTHONUNBUFFERED 1
-
-# Set the working directory inside the container
-WORKDIR /app
+# Use the official Python image from the Docker Hub
+FROM python:3.10
 
 # Install dependencies
-COPY requirements.txt /app/
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gcc g++ unixodbc-dev curl gnupg lsb-release && \
+    curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
+    curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list > /etc/apt/sources.list.d/mssql-release.list && \
+    apt-get update && \
+    ACCEPT_EULA=Y apt-get install -y msodbcsql17
+
+# Set the working directory in the container
+WORKDIR /code
+
+# Copy requirements.txt first to leverage Docker cache
+COPY requirements.txt /code/
+
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy your Django project code into the container
-COPY . /app/
+# Copy the rest of the application code
+COPY . /code/
 
-# Expose the port your app runs on
-EXPOSE 8000
+# Set environment variables
+ENV DJANGO_SETTINGS_MODULE=shedproj.settings
 
-# Run Gunicorn to serve your Django app
+# Run the Gunicorn server
 CMD ["gunicorn", "shedproj.wsgi:application", "--bind", "0.0.0.0:8000"]

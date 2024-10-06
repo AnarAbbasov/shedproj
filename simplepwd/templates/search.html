@@ -3,14 +3,9 @@
 {% block body_block %}
 
 
-<form method="get" action="{% url 'simplepwd:search' %}">
-<input type="text" name="q" placeholder="Search...">
-<button type="submit">Search</button>
-</form>
-<ul>
 {% for object in objects %}
-<li>{{ object.name }}</li>
-<li>{{ object.passwords.password }}</li>
+<li>Resource is:{{ object.name }} Password is:{{ object.passwords.password }}</li>
+
 {% endfor %}
 </ul>
 
