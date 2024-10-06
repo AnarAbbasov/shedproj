@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shedproj
+spec:
+  type: LoadBalancer
+  selector:
+    app: shedproj
+  ports:
+  - port: 8080
+    targetPort: 8080
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shedproj
+spec:
+  selector:
+    matchLabels:
+      app: shedproj
+  template:
+    metadata:
+      labels:
+        app: shedproj
+    spec:
+      containers:
+      - name: myashedprojpp
+        image: anarabbasov/shedproj:0.5
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+
+
+
+  
