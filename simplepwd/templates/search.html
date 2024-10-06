@@ -3,11 +3,42 @@
 {% block body_block %}
 
 
-{% for object in objects %}
-<li>Resource is:{{ object.name }} Password is:{{ object.passwords.password }}</li>
+<div
+    class="table-responsive">
+    <table
+        class="table table-primary"
+    >
+        <thead>
+            <tr>
+                <th scope="col">Resource</th>
+                <th scope="col">Password</th>
+                <th scope="col">Website</th>
+                <th scope="col">Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for object in objects %}
+            <tr class="">
+                <td scope="row">{{ object.name}}{{ object.pk}}</td>
+                <td>{{ object.passwords.password }}</td>
+                <td>{{ object.website }}</td>
+                <td>{{ object.notes }}</td>
+            </tr>
+           
+           
+            {% endfor %}
+           
+           
+        </tbody>
+    </table>
+</div>
 
-{% endfor %}
-</ul>
+
+
+
+
+
+
 
 
 {% endblock body_block %}
