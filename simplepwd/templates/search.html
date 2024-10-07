@@ -17,12 +17,12 @@
             </tr>
         </thead>
         <tbody>
-            {% for object in objects %}
+            {% for resource in resources %}
             <tr class="">
-                <td scope="row">{{ object.name}}{{ object.pk}}</td>
-                <td>{{ object.passwords.password }}</td>
-                <td>{{ object.website }}</td>
-                <td>{{ object.notes }}</td>
+                <td scope="row">{{ resource.name}}{{ resource.pk}}</td>
+                <td>{{ resource.passwords.password }}</td>
+                <td>{{ resource.website }}</td>
+                <td>{{ resource.notes }}</td>
             </tr>
            
            

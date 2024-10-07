@@ -76,7 +76,7 @@ class Password_Resource(CreateView):
 class Password_SearchView(ListView):
       model=models.Resource
       template_name = 'search.html'
-      context_object_name = 'objects'
+      context_object_name = 'resources'
       def get_queryset(self):
         query = self.request.GET.get('q')
         if query:

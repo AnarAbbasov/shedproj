@@ -8,9 +8,53 @@ spec:
     app: shedproj
   ports:
   - port: 8080
-    targetPort: 8080
+    targetPort: 8000
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: static-resources
+spec:
+  selector:
+    app: static-resources
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: static-resources
+spec:
+  selector:
+    matchLabels:
+      app: static-resources
+  template:
+    metadata:
+      labels:
+        app: static-resources
+    spec:
+      containers:
+      - name: static-resources
+        image: httpd:2.4
+        volumeMounts:
+        - mountPath: /usr/local/apache2/htdocs/
+          name: scalavolume
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+      volumes:
+      - name: scalavolume
+        hostPath:
+          path: /home/anar/static_files
+          type: Directory
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -25,8 +69,19 @@ spec:
         app: shedproj
     spec:
       containers:
-      - name: myashedprojpp
-        image: anarabbasov/shedproj:0.5
+      - name: shedproj
+        image: anarabbasov/shedproj:0.7
+        env:
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: username
+        - name: DB_PWD
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: password
         resources:
           limits:
             memory: "128Mi"

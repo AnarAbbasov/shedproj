@@ -17,10 +17,12 @@ COPY requirements.txt /code/
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+# Collect static files
+
 
 # Copy the rest of the application code
 COPY . /code/
-
+RUN python manage.py collectstatic --noinput
 # Set environment variables
 ENV DJANGO_SETTINGS_MODULE=shedproj.settings
 
