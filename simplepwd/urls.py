@@ -6,7 +6,7 @@ app_name = 'simplepwd'
 
 urlpatterns = [
     path('test/',views.testview,name='test'),
-    path('login/',views.user_login,name='user_login'),
+    path('login/',auth_views.LoginView.as_view(template_name='login.html'),name='user_login'),
     path('logout/',auth_views.LogoutView.as_view(template_name='logged_out.html'),name='user_logout'),
     path('resources/',views.Resource_ListView.as_view(),name='resource_list'),
     path('password/',views.Password_ListView.as_view(),name='password_list'),

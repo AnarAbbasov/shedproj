@@ -26,28 +26,6 @@ def testview(request):
 
 
 
-def user_login(request):
-    if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        user = authenticate(username=username, password=password)
-        if user:
-            if user.is_active:
-                login(request, user)
-                #check if its redirect 
-                if(str(request.META.get('HTTP_REFERER')).find('=')>0):
-                  return HttpResponseRedirect(str(request.META.get('HTTP_REFERER')).split('=')[1])
-                else: 
-                #direct login page call    
-                  return HttpResponseRedirect(reverse('index'))
-        else:
-            print("nologin")
-            return render(request, "nologin.html")
-
-    return render(request, "login.html")
-
-
-
 class Resource_ListView(LoginRequiredMixin,ListView):
       model=models.Resource
       template_name='resource_detail.html'
