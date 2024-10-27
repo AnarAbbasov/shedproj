@@ -13,5 +13,6 @@ urlpatterns = [
     path('add_pwd/',views.Password_CreateView.as_view(),name='create_password'),
     path('add_resource/',views.Password_Resource.as_view(),name='create_resource'),
     path('search/', views.Password_SearchView.as_view(), name='search'),
+    path('delete/<int:pk>', views.Resource_DeleteView.as_view(), name='delete'),
     
 ]

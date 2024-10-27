@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
-from django.views.generic import TemplateView,ListView,DetailView,CreateView
+from django.views.generic import TemplateView,ListView,DetailView,CreateView,DeleteView
 from simplepwd import models
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required 
@@ -67,7 +67,10 @@ class Password_SearchView(LoginRequiredMixin,ListView):
         return ""
 
 
-
+class Resource_DeleteView(LoginRequiredMixin,DeleteView):
+      model=models.Resource
+      template_name='delete.html'
+      
 
 
 

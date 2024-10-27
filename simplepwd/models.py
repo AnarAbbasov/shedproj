@@ -14,6 +14,8 @@ class Resource(models.Model):
         # Assuming you have a view named 'my_model_detail' that displays details of an instance
        # return reverse('my_model_detail', args=[str(self.id)])
        return reverse('index')
+    
+    
 
 class Passwords(models.Model):
     password=models.CharField(max_length=256)
