@@ -9,3 +9,4 @@ simplepwd/__pycache__/urls.cpython-312.pyc
 simplepwd/__pycache__/views.cpython-312.pyc
 simplepwd/static/images/eagle.png
 shedproj/__pycache__/
+simplepwd/migrations/__pycache__/0003_alter_resource_name.cpython-312.pyc
