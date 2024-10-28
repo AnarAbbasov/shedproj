@@ -16,6 +16,9 @@
             <div class="row justify-content-start">
               <div class="col-3">
                <img src="{%static 'eagle.png'%}">
+               {%  if user.is_authenticated %}
+               Hi, {{user}}
+               {%endif%}
               </div>
 
               <div class="col-8">
@@ -35,30 +38,30 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                       <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                          <a class="nav-link" href="#"> Ressource hinzufügen<span class="sr-only">(current)</span></a>
+                          <a class="nav-link" href={% url "simplepwd:create_resource" %}> Ressource hinzufügen<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Passwort hinzufügen</a>
+                          <a class="nav-link" href={% url "simplepwd:create_password" %}>Passwort hinzufügen</a>
                         </li>
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
+                            Mehr
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href={% url 'simplepwd:user_logout' %}>Logout</a>
+                            <a class="dropdown-item" href={% url 'simplepwd:user_logout' %}>Abmelden</a>
                             <a class="dropdown-item" href={% url 'simplepwd:user_login' %}>Login</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Something else here</a>
                           </div>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link disabled" href="#">Disabled</a>
+                          <a class="nav-link " href={% url 'simplepwd:password_list' %}>Passwortliste</a>
                         </li>
                       </ul>
                       <form id="searchform" class="form-inline my-2 my-lg-0" action="{% url 'simplepwd:search' %}">
                         {% csrf_token %} 
-                        <input id="searchbox" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
-                        <button class="btn btn-outline-success my-2 my-sm-0"  type="submit">Search</button>
+                        <input id="searchbox" class="form-control mr-sm-2" type="search" placeholder="Suchen" aria-label="Suchen" name="q">
+                        <button class="btn btn-outline-success my-2 my-sm-0"  type="submit">Suchen</button>
                       </form>
                     </div>
                   </nav>

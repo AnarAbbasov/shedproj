@@ -8,6 +8,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CPasswordForm,CResourceForm
+from django.urls import reverse_lazy
 from datetime import date
 # Create your views here.
 
@@ -70,6 +71,7 @@ class Password_SearchView(LoginRequiredMixin,ListView):
 class Resource_DeleteView(LoginRequiredMixin,DeleteView):
       model=models.Resource
       template_name='delete.html'
+      success_url=reverse_lazy('simplepwd:resource_list')
       
 
 
