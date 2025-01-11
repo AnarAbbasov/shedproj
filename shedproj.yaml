@@ -9,6 +9,7 @@ spec:
   ports:
   - port: 8080
     targetPort: 8000
+    nodePort: 31988
 ---
 apiVersion: v1
 kind: Service
@@ -21,6 +22,8 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
+    odePort: 32027
+  type: LoadBalancer
 
 ---
 apiVersion: apps/v1
@@ -38,23 +41,14 @@ spec:
     spec:
       containers:
       - name: static-resources
-        image: httpd:2.4
-        volumeMounts:
-        - mountPath: /usr/local/apache2/htdocs/
-          name: scalavolume
+        image: anarabbasov/staticserver:0.1
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
         - containerPort: 80
-      volumes:
-      - name: scalavolume
-        hostPath:
-          path: /home/anar/static_files
-          type: Directory
-
----
+---              
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -88,6 +82,11 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 8080
+      
+      
+      
+      
+        
 
 
 
