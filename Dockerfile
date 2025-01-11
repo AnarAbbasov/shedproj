@@ -10,6 +10,8 @@ RUN apt-get update && \
     ACCEPT_EULA=Y apt-get install -y msodbcsql17
 
 # Set the working directory in the container
+
+
 WORKDIR /code
 
 # Copy requirements.txt first to leverage Docker cache
@@ -21,8 +23,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 
 # Copy the rest of the application code
-COPY . /code/
+COPY . /code
+
 RUN python manage.py collectstatic --noinput
+
 # Set environment variables
 ENV DJANGO_SETTINGS_MODULE=shedproj.settings
 
