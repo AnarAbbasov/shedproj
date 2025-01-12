@@ -22,7 +22,7 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
-    NodePort: 32027
+    nodePort: 32027
   type: LoadBalancer
 
 ---
@@ -64,7 +64,7 @@ spec:
     spec:
       containers:
       - name: shedproj
-        image: anarabbasov/shedproj:1.7.1
+        image: anarabbasov/shedproj:1.7.3
         env:
         - name: DB_USER
           valueFrom:
