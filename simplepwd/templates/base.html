@@ -48,7 +48,7 @@
                             Mehr
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href={% url 'simplepwd:user_logout' %}>Abmelden</a>
+                            <a class="dropdown-item"  >Abmelden</a>
                             <a class="dropdown-item" href={% url 'simplepwd:user_login' %}>Login</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Something else here</a>
@@ -70,7 +70,7 @@
             
           </div> 
        
-                                                                                                                                   
+                                                                                                                                 
       {%block body_block%}
      
 
@@ -79,7 +79,7 @@
         <div class="container">
             <div class="row">
               <div class="col-sm">
-               
+                <form method="post" action="{% url 'simplepwd:user_logout' %}"> {% csrf_token %} <button type="submit">Logout</button> </form>   
               </div>
               <div class="col-sm">
                 entwickelt von Anar(c)
