@@ -22,7 +22,7 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
-    odePort: 32027
+    NodePort: 32027
   type: LoadBalancer
 
 ---
@@ -41,7 +41,7 @@ spec:
     spec:
       containers:
       - name: static-resources
-        image: anarabbasov/staticserver:0.1
+        image: anarabbasov/staticserver:1.3.2
         resources:
           limits:
             memory: "128Mi"
@@ -64,7 +64,7 @@ spec:
     spec:
       containers:
       - name: shedproj
-        image: anarabbasov/shedproj:1.3
+        image: anarabbasov/shedproj:1.7.1
         env:
         - name: DB_USER
           valueFrom:
